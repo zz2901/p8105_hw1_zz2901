@@ -3,3 +3,25 @@ title: "Homework 1 zz2901"
 output: github_document
 ---
 
+## Problem 1
+
+Code for loading "penguins" dataset and descriptions 
+
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+nrow(penguins)
+ncol(penguins)
+mean(penguins$flipper_length_mm,na.rm = TRUE)
+```
+
+Description for "penguins" dataset
+
+* The "penguins" dataset has factors ("species", "island", "sex"), doubles ("bill_length_mm", "bill_depth_mm"), integers ("flipper_length_mm", "body_mass_g", "year").  
+
+* There are 344 rows and 8 columns in the dataset.
+
+* After removing missing data, the mean flipper length is 200.9152 mm.
+
+
+
