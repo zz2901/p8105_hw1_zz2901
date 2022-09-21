@@ -35,4 +35,6 @@ ggplot(plot_df, aes(x = x, y = y, color = penguins$species)) + geom_point()
 ggsave("scatter_plot_flipper_vs_bill_length.pdf")
 ```
 
+## Problem 2
+
 
