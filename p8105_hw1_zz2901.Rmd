@@ -37,4 +37,28 @@ ggsave("scatter_plot_flipper_vs_bill_length.pdf")
 
 ## Problem 2
 
+### Create requested data frame `mean_df` and take mean of each variable
+
+```{r mean_df}
+mean_df <- tibble(
+  random_sample = rnorm(10),
+  logical_vector = random_sample>0,
+  character_vector = c("v1","v2","v3","v4","v5","v6","v7","v8","v9","v10"),
+  factor_vector = factor(c("level_1","level_1","level_1","level_1","level_1","level_1",
+                           "level_1","level_1","level_2","level_3"))
+)
+mean_df
+mean(mean_df$random_sample)
+mean(mean_df$logical_vector)
+mean(mean_df$character_vector)
+mean(mean_df$factor_vector)
+```
+
+We could calculate the means for `random_sample` and `logical_vector`. 
+
+But we could not calculate the means for `character_vector` or `factor_vector`.
+
+```{r}
+
+```
 
