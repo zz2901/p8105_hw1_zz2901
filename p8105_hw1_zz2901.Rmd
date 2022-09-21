@@ -18,11 +18,11 @@ penguins
 
 ### Description for "`penguins`" dataset
 
-* The "`penguins`" dataset has variables **`r paste0('"',colnames(penguins),'"')`**. Variable types include **factors** ("species", "island", "sex"), **doubles** ("bill_length_mm", "bill_depth_mm"), and **integers** ("flipper_length_mm", "body_mass_g", "year").  
+* The "`penguins`" dataset has variables **`r paste0('"',colnames(penguins),'"')`**. Variable types include **factors** ("species", "island", "sex"), **doubles** ("bill_length_mm", "bill_depth_mm"), and **integers** ("flipper_length_mm", "body_mass_g", "year"). 
 
-* There are **`r nrow(penguins)` rows and `r ncol(penguins)` columns** in the dataset.
+* There are **``r nrow(penguins)`` rows and ``r ncol(penguins)`` columns** in the dataset.
 
-* After removing missing data, the **mean flipper length is `r round(mean(penguins$flipper_length_mm,na.rm = TRUE),digits=3)` mm**.
+* After removing missing data, the **mean flipper length is ``r round(mean(penguins$flipper_length_mm,na.rm = TRUE),digits=3)`` mm**.
 
 ### Scatterplot for `flipper_length_mm` (y) vs `bill_length_mm` (x)
 ```{r flipper_bill_scatterplot}
