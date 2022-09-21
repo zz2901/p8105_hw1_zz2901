@@ -3,25 +3,36 @@ title: "Homework 1 zz2901"
 output: github_document
 ---
 
-## Problem 1
-
-Code for loading "penguins" dataset and descriptions 
-
-```{r}
-data("penguins", package = "palmerpenguins")
-penguins
-nrow(penguins)
-ncol(penguins)
-mean(penguins$flipper_length_mm,na.rm = TRUE)
+```{r load_package, echo = FALSE, message=FALSE}
+library(tidyverse)
 ```
 
-Description for "penguins" dataset
+## Problem 1
 
-* The "penguins" dataset has factors ("species", "island", "sex"), doubles ("bill_length_mm", "bill_depth_mm"), integers ("flipper_length_mm", "body_mass_g", "year").  
+### Code for loading "`penguins`" dataset and descriptions 
 
-* There are 344 rows and 8 columns in the dataset.
+```{r penguins_import}
+data("penguins", package = "palmerpenguins")
+penguins
+```
 
-* After removing missing data, the mean flipper length is 200.9152 mm.
+### Description for "`penguins`" dataset
 
+* The "`penguins`" dataset has variables **`r paste0('"',colnames(penguins),'"')`**. Variable types include **factors** ("species", "island", "sex"), **doubles** ("bill_length_mm", "bill_depth_mm"), and **integers** ("flipper_length_mm", "body_mass_g", "year").  
+
+* There are **`r nrow(penguins)` rows and `r ncol(penguins)` columns** in the dataset.
+
+* After removing missing data, the **mean flipper length is `r round(mean(penguins$flipper_length_mm,na.rm = TRUE),digits=3)` mm**.
+
+### Scatterplot for `flipper_length_mm` (y) vs `bill_length_mm` (x)
+```{r flipper_bill_scatterplot}
+plot_df <- tibble(
+  x = penguins$bill_length_mm,
+  y = penguins$flipper_length_mm
+)
+
+ggplot(plot_df, aes(x = x, y = y, color = penguins$species)) + geom_point()
+ggsave("scatter_plot_flipper_vs_bill_length.pdf")
+```
 
 
