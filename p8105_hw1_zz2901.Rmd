@@ -48,17 +48,34 @@ mean_df <- tibble(
                            "level_1","level_1","level_2","level_3"))
 )
 mean_df
-mean(mean_df$random_sample)
-mean(mean_df$logical_vector)
-mean(mean_df$character_vector)
-mean(mean_df$factor_vector)
+mean(mean_df %>% pull(random_sample))
+mean(mean_df %>% pull(logical_vector))
+mean(mean_df %>% pull(character_vector))
+mean(mean_df %>% pull(factor_vector))
 ```
 
 We could calculate the means for `random_sample` and `logical_vector`. 
 
 But we could not calculate the means for `character_vector` or `factor_vector`.
 
-```{r}
+### Convert logical, character, and factor variables to numeric, and calculate their means
+```{r convert_numeric, eval = FALSE}
+mean_df$logical_vector <- as.numeric(mean_df$logical_vector)
+mean_df$logical_vector 
 
+mean_df$character_vector <- as.numeric(mean_df$character_vector)
+mean_df$character_vector
+
+mean_df$factor_vector <- as.numeric(mean_df$factor_vector)
+mean_df$factor_vector
 ```
 
+After attempting to convert `logical_vector`, `character_vector`, and `factor_vector` to be numeric,
+
+* The `logical_vector`gets converted to 0 and 1, which indicates automatic conversion when using `mean()`. 
+
+  * The proof is that the mean of `logical_vector` stays the same as before conversion (before conversion: mean = ``r mean(mean_df$logical_vector)``, after conversion: mean = ``r mean(as.numeric(mean_df$logical_vector))``)
+
+* we could not successfully convert `character_vector` to be numeric, which explains why we could not calculate its mean direclty using `mean()`
+
+* we successfully converted `factor_vector` to be numeric and the mean is ``r mean(as.numeric(mean_df$factor_vector))``. However, this step might not be automatic when using `mean()`, which could have treated it as character vectors and led to insuccessful mean calculation
